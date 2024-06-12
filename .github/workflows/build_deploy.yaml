@@ -1,0 +1,35 @@
+name: Build and Deploy
+on:
+  push:
+  pull_request:
+
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.12
+        architecture: x64
+    - name: Make output directory
+      run: "mkdir -p _site/datatig_for_this_website"
+    - name: Install DataTig
+      run: "pip install datatig"
+    - name: Build DataTig site
+      run: "python -m datatig.cli build . --staticsiteoutput _site/datatig_for_this_website --staticsiteurl https://www.datatig.com/datatig_for_this_website"
+    - name: Build Jekyll site
+      run: "docker run --rm --volume=\"${{ github.workspace }}:/srv/jekyll:Z\" jekyll/builder:4 /bin/bash -c 'chmod 777 /srv/jekyll && jekyll build _site'"
+    - name: Upload Artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: "./_site"
+      if: github.ref == 'refs/heads/main'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      if: github.ref == 'refs/heads/main'

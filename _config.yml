@@ -1,0 +1,9 @@
+title: DataTig
+url: https://www.datatig.com
+baseurl:
+
+exclude:
+  - README.md
+  - datatig.yaml
+keep_files:
+  - datatig_for_this_website

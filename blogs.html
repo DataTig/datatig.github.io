@@ -1,0 +1,31 @@
+---
+layout: default
+title: Blogs
+---
+
+
+<h2>Blogs</h2>
+
+{% for post in site.posts %}
+    <div itemscope itemtype="https://schema.org/BlogPosting">
+        <h3>
+            <a href="{{ post.url | relative_url }}" itemprop="url">
+                <span itemprop="dateCreated">{{ post.date | date: "%a %e %B %Y" }}</span>:
+                <span itemprop="name">{{ post.title }}</span>
+            </a>
+        </h3>
+        <div>
+            {% if post.description %}
+                {{ post.description }}
+            {% else %}
+                {{ post.content | strip_html | truncatewords: 50 }}
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+
+
+<div>
+    <a href="{{ site.baseurl }}/blogs.xml">RSS feed</a>
+</div>
+

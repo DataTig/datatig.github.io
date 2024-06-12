@@ -1,0 +1,48 @@
+---
+layout: default
+title: Welcome
+---
+
+<h2>What is DataTig?</h2>
+
+<p>
+    DataTig is a set of tools to help when a community of people want to crowd source a data set and they use a git repository to store the data.
+</p>
+
+<p>
+    In these cases, DataTig can be used on the git repository to help people contribute new data or edit existing data, check data quality and transform the data into more useful forms for everyone to re-use.
+</p>
+
+<h2>Open Source Python Library</h2>
+
+<p>
+    You can also use the tools directly as an open source Python library.
+</p>
+
+<div class="links">
+    <a href="https://pypi.org/project/DataTig/">PyPi</a>
+    <a href="https://datatig.readthedocs.io/en/latest/">Docs</a>
+    <a href="https://github.com/DataTig/DataTig">Source</a>
+</div>
+
+
+<h2>Blogs</h2>
+
+{% for post in site.posts %}
+    <div itemscope itemtype="https://schema.org/BlogPosting">
+        <h3>
+            <a href="{{ post.url | relative_url }}" itemprop="url">
+                <span itemprop="dateCreated">{{ post.date | date: "%a %e %B %Y" }}</span>:
+                <span itemprop="name">{{ post.title }}</span>
+            </a>
+        </h3>
+        <div>
+            {% if post.description %}
+                {{ post.description }}
+            {% else %}
+                {{ post.content | strip_html | truncatewords: 50 }}
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+
