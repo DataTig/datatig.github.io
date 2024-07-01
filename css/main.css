@@ -1,0 +1,52 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+  --main-background-color: #a7d9e8;
+  --highlight-color: #74a6b5;
+}
+
+
+header {
+    background: var(--main-background-color);
+    padding: 10px 0;
+
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+
+footer {
+    margin: 50px 0;
+    font-size: 80%;
+    text-align: center;
+}
+
+a.button {
+    display: inline-block;
+    background: var(--main-background-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    border: 0;
+}
+a.button:hover, a.button:focus {
+    text-decoration: underline;
+    color: black;
+    background: var(--highlight-color);
+}
+
+.links {
+    text-align: right;
+    padding: 10px 0;
+    a {
+        display: inline-block;
+        margin: 5px;
+    }
+}
