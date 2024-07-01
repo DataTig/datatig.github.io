@@ -19,3 +19,13 @@ types:
     - id: content
       key: content
       title: Content
+      multiline: True
+    # We always want the correct layout set.
+    # There is no feature in DataTig to do this automatically
+    # for us yet, so for now we'll just add a field
+    # and tell people what value it should have.
+    - id: layout
+      key: layout
+      title: layout
+      description: This should always be set to blog
+
