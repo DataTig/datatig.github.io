@@ -1,6 +1,6 @@
 ---
 layout: blog
-title:  "Python Library Version 0.6.0 Released"
+title:  "Python Library Version 0.6.0 Released - TITLE CHANGED FOR DEMO"
 ---
 
 We released Version 0.6.0 of our Python Library.
