@@ -7,7 +7,7 @@ layout: default
 
     <h2 itemprop="name">{{ page.title }}</h2>
 
-    <ul>
+    <ul class="blog-meta">
         <li itemprop="dateCreated">{{ page.date | date: "%a %e %b %Y" }}</li>
     </ul>
 
@@ -17,21 +17,22 @@ layout: default
 
 </div>
 
-
-<div>
-    {% if page.previous.url %}
-        <a href="{{ page.previous.url | relative_url }}">
-            Previous: {{page.previous.title}}
-        </a>
-    {% endif %}
-</div>
-<div>
-    <a href="{{ site.baseurl }}/blogs.xml">RSS feed</a>
-</div>
-<div>
-    {% if page.next.url %}
-        <a href="{{ page.next.url | relative_url }}">
-            Next: {{page.next.title}}
-        </a>
-    {% endif %}
+<div class="end-page-navigation">
+    <div>
+        {% if page.previous.url %}
+            <a href="{{ page.previous.url | relative_url }}">
+                Previous: {{page.previous.title}}
+            </a>
+        {% endif %}
+    </div>
+    <div>
+        <a href="{{ site.baseurl }}/blogs.xml">RSS feed</a>
+    </div>
+    <div>
+        {% if page.next.url %}
+            <a href="{{ page.next.url | relative_url }}">
+                Next: {{page.next.title}}
+            </a>
+        {% endif %}
+    </div>
 </div>

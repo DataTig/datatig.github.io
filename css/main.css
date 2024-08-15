@@ -6,6 +6,7 @@ html, body {
 :root {
   --main-background-color: #a7d9e8;
   --highlight-color: #74a6b5;
+  --highlight-font: arial, sans-serif;
 }
 
 
@@ -13,6 +14,7 @@ header {
     background: var(--main-background-color);
     padding: 10px 0;
     h1 {
+        font-family: var(--highlight-font);
         a {
             text-decoration: none;
             color: black;
@@ -48,6 +50,7 @@ a.button {
     text-decoration: none;
     color: black;
     border: 0;
+    font-family: var(--highlight-font);
 }
 a.button:hover, a.button:focus {
     text-decoration: underline;
@@ -61,5 +64,32 @@ a.button:hover, a.button:focus {
     a {
         display: inline-block;
         margin: 5px;
+    }
+}
+
+h2, h3, h4 {
+    font-family: var(--highlight-font);
+}
+
+ul.blog-meta {
+    margin: 10px 0;
+    padding: 0;
+    li {
+        list-style-type: none;
+        font-style: italic;
+        margin: 5px 0;
+        padding: 0;
+    }
+}
+
+.end-page-navigation {
+    margin: 40px 0 10px 0;
+    font-family: var(--highlight-font);
+}
+@media screen and (min-width: 60rem) {
+    .end-page-navigation {
+        display: grid;
+        grid-auto-flow: column;
+        grid-gap: 10px;
     }
 }
