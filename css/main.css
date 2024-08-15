@@ -12,7 +12,20 @@ html, body {
 header {
     background: var(--main-background-color);
     padding: 10px 0;
-
+    h1 {
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        a:hover, a:focus {
+            text-decoration: underline;
+            color: black;
+        }
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
 }
 
 .content {
