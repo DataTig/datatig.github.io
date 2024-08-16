@@ -93,3 +93,39 @@ ul.blog-meta {
         grid-gap: 10px;
     }
 }
+
+.screenshots {
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    grid-gap: 10px;
+    > div {
+        text-align: center;
+        a {
+            img {
+                border: 1px solid black;
+                width: 100px;
+                height: 100px;
+            }
+        }
+        p {
+            margin: 2px 0 20px 0;
+            font-style: italic;
+        }
+    }
+}
+@media screen and (min-width: 650px) {
+    .screenshots {
+        display: grid;
+        grid-template-columns: repeat(3, 210px);
+        grid-gap: 10px;
+        > div {
+            width: 200px;
+            a img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+}
+
+
