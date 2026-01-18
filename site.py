@@ -134,6 +134,7 @@ config = Config(
         PipeCopyWithVersioning(extensions=["css"], directories=["css"]),
         PipeCopyWithVersioning(directories=["images"], extensions=["png"]),
         PipeCopy(directories=["fontawesome-free-6.7.2-web"]),
+        PipeCopy(extensions=["txt"]),
         PipeLoadDatatig(),
         PipeBuildContext(),
         PipeJinja2(jinja2_environment=jinja2_environment),
