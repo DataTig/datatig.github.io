@@ -1,0 +1,10 @@
+<div itemscope itemtype="https://schema.org/BlogPosting">
+    <h3>
+        <a href="{{ blog_urls[blog.get_id()] }}" itemprop="url">
+            <span itemprop="dateCreated">{{ blog.get_data().get("published_at").get("value_iso")|date_format("%a %d %b %Y") }}</span>:
+            <span itemprop="name">{{ blog.get_data().title.value}}</span>
+        </a>
+    </h3>
+
+    <p>{{ blog.get_data().description.value }}</p>
+</div>

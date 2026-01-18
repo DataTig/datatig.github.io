@@ -6,6 +6,7 @@ on:
 jobs:
   build_deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     permissions:
       pages: write
       id-token: write
@@ -14,22 +15,16 @@ jobs:
     - name: Setup python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.12
+        python-version: 3.13
         architecture: x64
-    - name: Make output directory
-      run: "mkdir -p _site/datatig_for_this_website"
-    - name: Install DataTig
-      run: "pip install datatig"
-    - name: Build DataTig site
-      run: "python -m datatig.cli build . --staticsiteoutput _site/datatig_for_this_website --staticsiteurl https://www.datatig.com/datatig_for_this_website"
-    - name: Build Jekyll site
-      run: "docker run --rm --volume=\"${{ github.workspace }}:/srv/jekyll:Z\" jekyll/builder:4 /bin/bash -c 'chmod 777 /srv/jekyll && jekyll build _site'"
+    - name: Install Software
+      run: "pip install -r requirements.txt"
+    - name: Make site
+      run: "python site.py build"
     - name: Upload Artifact
       uses: actions/upload-pages-artifact@v3
       with:
         path: "./_site"
-      if: github.ref == 'refs/heads/main'
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
-      if: github.ref == 'refs/heads/main'

@@ -1,0 +1,6 @@
+-r requirements.txt
+staticpipes[dev]
+black
+isort
+flake8
+

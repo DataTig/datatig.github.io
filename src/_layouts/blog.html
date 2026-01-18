@@ -1,0 +1,32 @@
+{% extends "_layouts/default.html" %}
+
+{% block title %}{{ blog.title.value }}{% endblock %}
+
+{% block content %}
+
+<div itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="url" content="TODO">
+
+    <h2 itemprop="name">{{ blog.title.value }}</h2>
+
+    <ul class="blog-meta">
+        <li itemprop="dateCreated">{{ blog.published_at.value_iso|date_format("%a %d %b %Y") }}</li>
+    </ul>
+
+    <div itemprop="text" class="blog_content">
+        {{ blog.content.value | render_markdown | safe }}
+    </div>
+
+</div>
+
+<div class="end-page-navigation">
+    <div>
+    </div>
+    <div>
+        <a href="/blogs.xml">RSS feed</a>
+    </div>
+    <div>
+    </div>
+</div>
+
+{% endblock %}

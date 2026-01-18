@@ -1,0 +1,17 @@
+{% extends "_layouts/default.html" %}
+
+{% block title %}Blogs{% endblock %}
+
+{% block content %}
+
+<h2>Blogs</h2>
+
+{% for blog in blogs_sorted %}
+    {% include "_layouts/list_blog_item.html" %}
+{% endfor %}
+
+<p>
+    <a href="/blogs.xml"><i class="fa-solid fa-square-rss"></i> RSS feed</a>
+</div>
+
+{% endblock %}

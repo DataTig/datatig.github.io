@@ -1,7 +1,8 @@
----
-layout: default
-title: Welcome
----
+{% extends "_layouts/default.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
 
 <h2>What is DataTig?</h2>
 
@@ -20,13 +21,13 @@ title: Welcome
 <div class="screenshots">
     <div>
         <a href="https://github.com/org-id/register/tree/main/lists/gb">
-            <img src="{{ site.baseurl }}/images/screenshot.repo.thumb.png" alt="Screenshot of files in a git repository">
+            <img src="/images/screenshot.repo.thumb.png" alt="Screenshot of files in a git repository">
         </a>
         <p>Files of data in the repository</p>
     </div>
     <div>
         <a href="https://github.com/org-id/register/blob/main/datatig.yaml">
-            <img src="{{ site.baseurl }}/images/screenshot.config.thumb.png" alt="Screenshot of a config file">
+            <img src="/images/screenshot.config.thumb.png" alt="Screenshot of a config file">
         </a>
         <p>Config file</p>
     </div>
@@ -37,55 +38,55 @@ title: Welcome
 <div class="screenshots">
     <div>
         <a href="https://hub.datatig.com/gh/org-id/register/tree/main/type/lists/record">
-            <img src="{{ site.baseurl }}/images/screenshot.list.thumb.png" alt="Screenshot listing data">
+            <img src="/images/screenshot.list.thumb.png" alt="Screenshot listing data">
         </a>
         <p>Search data</p>
     </div>
     <div>
         <a href="https://hub.datatig.com/gh/org-id/register/tree/main/type/lists/record/gb-gov">
-            <img src="{{ site.baseurl }}/images/screenshot.show.thumb.png" alt="Screenshot viewing data">
+            <img src="/images/screenshot.show.thumb.png" alt="Screenshot viewing data">
         </a>
         <p>View data</p>
     </div>
     <div>
         <a href="https://hub.datatig.com/gh/org-id/register/tree/main/type/lists/record/gb-gov">
-            <img src="{{ site.baseurl }}/images/screenshot.errors.thumb.png" alt="Screenshot showing errorrs in data">
+            <img src="/images/screenshot.errors.thumb.png" alt="Screenshot showing errorrs in data">
         </a>
         <p>Errors in data</p>
     </div>
     <div>
         <a href="https://hub.datatig.com/gh/org-id/register/tree/main/type/lists/field/listType">
-            <img src="{{ site.baseurl }}/images/screenshot.field_stats.thumb.png" alt="Screenshot showing stats about data">
+            <img src="/images/screenshot.field_stats.thumb.png" alt="Screenshot showing stats about data">
         </a>
         <p>Stats about data</p>
     </div>
     <div>
         <a href="https://python-library-static-demos.datatig.com/org-id-register/branch/main/type/lists/record/gb-gov/editweb/">
-            <img src="{{ site.baseurl }}/images/screenshot.edit.thumb.png" alt="Screenshot of a web form">
+            <img src="/images/screenshot.edit.thumb.png" alt="Screenshot of a web form">
         </a>
         <p>Web form to edit data</p>
     </div>
     <div>
         <a href="https://www.datatig.com/datatig_for_this_website/type/blog/record/2024-08-11-hub-released/editweb/">
-            <img src="{{ site.baseurl }}/images/screenshot.edit_markdown.thumb.png" alt="Screenshot of a web form with a Markdown editor">
+            <img src="/images/screenshot.edit_markdown.thumb.png" alt="Screenshot of a web form with a Markdown editor">
         </a>
         <p>Web form to edit data with markdown blog post</p>
     </div>
     <div>
-        <a href="{{ site.baseurl }}/images/screenshot.sqlite.png">
-            <img src="{{ site.baseurl }}/images/screenshot.sqlite.thumb.png" alt="Screenshot browsing a SQLite database">
+        <a href="/images/screenshot.sqlite.png">
+            <img src="/images/screenshot.sqlite.thumb.png" alt="Screenshot browsing a SQLite database">
         </a>
         <p>Export to SQLite</p>
     </div>
     <div>
-        <a href="{{ site.baseurl }}/images/screenshot.csv.png">
-            <img src="{{ site.baseurl }}/images/screenshot.csv.thumb.png" alt="Screenshot of a spreadsheet">
+        <a href="/images/screenshot.csv.png">
+            <img src="/images/screenshot.csv.thumb.png" alt="Screenshot of a spreadsheet">
         </a>
         <p>Export to spreadsheets</p>
     </div>
     <div>
         <a href="https://hub.datatig.com/gh/org-id/register/tree/main/type/lists/record/gb-gov/api1.json">
-            <img src="{{ site.baseurl }}/images/screenshot.api.thumb.png" alt="Screenshot on a JSON API">
+            <img src="/images/screenshot.api.thumb.png" alt="Screenshot on a JSON API">
         </a>
         <p>JSON API</p>
     </div>
@@ -126,7 +127,7 @@ title: Welcome
     <a href="https://datatig.readthedocs.io/en/latest/how-to-guide/use-github-actions-to-build-and-host-your-site.html" class="button"><i class="fa-solid fa-book"></i> Docs - use GitHub actions and pages to build Jekyll and DataTig at the same time</a>
 </div>
 
-<p>For example, this website is a Jekyll and DataTig website!</p>
+<p>For example, this website is a DataTig website (with <a href="https://staticpipes.teacaketech.scot/">the StaticPipes static site builder</a>)!</p>
 
 <div class="links">
     <a href="https://hub.datatig.com/gh/DataTig/datatig.github.io" class="button"><i class="fa-solid fa-display"></i> See this website on DataTig Hub</a>
@@ -137,21 +138,8 @@ title: Welcome
 
 <h2>Blogs</h2>
 
-{% for post in site.posts %}
-    <div itemscope itemtype="https://schema.org/BlogPosting">
-        <h3>
-            <a href="{{ post.url | relative_url }}" itemprop="url">
-                <span itemprop="dateCreated">{{ post.date | date: "%a %e %B %Y" }}</span>:
-                <span itemprop="name">{{ post.title }}</span>
-            </a>
-        </h3>
-        <div>
-            {% if post.description %}
-                {{ post.description }}
-            {% else %}
-                {{ post.content | strip_html | truncatewords: 50 }}
-            {% endif %}
-        </div>
-    </div>
+{% for blog in blogs_sorted %}
+    {% include "_layouts/list_blog_item.html" %}
 {% endfor %}
 
+{% endblock %}

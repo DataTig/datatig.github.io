@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{{ page.title }} - {{ site.title }}</title>
-        <link href="{{ site.baseurl }}/css/main.css" rel="stylesheet"/>
-        <link rel="alternate" type="application/rss+xml" href="{{ site.baseurl }}/blogs.xml">
-        <link rel="icon" href="{{ "/images/logo.png" |  absolute_url  }}" />
-        <meta property="og:image" content="{{ "/images/logo.png" |  absolute_url  }}" />
+        <title>{% block title %}{% endblock %} - DataTig</title>
+        <link href="/css/main.css" rel="stylesheet"/>
+        <link rel="alternate" type="application/rss+xml" href="/blogs.xml">
+        <link rel="icon" href="/images/logo.png" />
+        <meta property="og:image" content="/images/logo.png" />
         <link href="/fontawesome-free-6.7.2-web/css/fontawesome.min.css" rel="stylesheet" />
         <link href="/fontawesome-free-6.7.2-web/css/brands.min.css" rel="stylesheet" />
         <link href="/fontawesome-free-6.7.2-web/css/solid.min.css" rel="stylesheet" />
@@ -16,9 +16,9 @@
         <header>
             <div class="content">
                 <h1>
-                    <a href="{{ site.baseurl }}/">
-                        <img src="{{ site.baseurl }}/images/logo.png" alt="DataTig Logo">
-                        {{ site.title }}
+                    <a href="/">
+                        <img src="/images/logo.png" alt="DataTig Logo">
+                        DataTig
                     </a>
                 </h1>
             </div>
@@ -31,7 +31,7 @@
         </nav>
         <div>
             <div id="body"><div class="content">
-                {{ content }}
+                {% block content %}{% endblock %}
             </div></div>
         </div>
         <footer>

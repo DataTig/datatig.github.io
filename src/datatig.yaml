@@ -20,12 +20,13 @@ types:
       key: content
       title: Content
       type: markdown
-    # We always want the correct layout set.
-    # There is no feature in DataTig to do this automatically
-    # for us yet, so for now we'll just add a field
-    # and tell people what value it should have.
-    - id: layout
-      key: layout
-      title: layout
-      description: This should always be set to blog
-
+    - id: published_at
+      key: published_at
+      title: Published At
+      type: datetime
+      timezone: Europe/London
+    - id: updated_at
+      key: updated_at
+      title: Updated At
+      type: datetime
+      timezone: Europe/London

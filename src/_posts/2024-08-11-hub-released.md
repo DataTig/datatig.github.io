@@ -1,6 +1,8 @@
 ---
-layout: blog
 title:  "Hub Released"
+description: "This summer we have started a Hub website - a web app that can host the data from many repositories with features to ..."
+published_at: "2024-08-11 12:00:00"
+updated_at: "2024-08-11 12:00:00"
 ---
 
 This summer we have started a Hub website - a web app that can host the data from many repositories with features to:

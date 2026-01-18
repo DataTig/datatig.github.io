@@ -1,6 +1,8 @@
 ---
-layout: blog
 title:  "Python Library Version 0.3.1 Released"
+description: "We released Version 0.3.1 of our Python Library."
+published_at: "2022-03-31 12:00:00"
+updated_at: "2022-03-31 12:00:00"
 ---
 
 We released Version 0.3.1 of our Python Library.
