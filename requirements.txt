@@ -8,10 +8,8 @@ attrs==25.3.0
     # via
     #   jsonschema
     #   referencing
-datatig==0.8.0
-    # via
-    #   -r requirements.in
-    #   staticpipes-datatig
+datatig @ git+https://github.com/Datatig/DataTig.git@theattic
+    # via -r requirements.in
 dateparser==1.2.1
     # via datatig
 feedgen==0.9.0
@@ -41,9 +39,7 @@ python-dateutil==2.9.0.post0
     #   dateparser
     #   feedgen
 pytz==2025.2
-    # via
-    #   datatig
-    #   dateparser
+    # via dateparser
 pyyaml==6.0.2
     # via
     #   datatig
@@ -64,11 +60,7 @@ rpds-py==0.25.0
     #   referencing
 six==1.17.0
     # via python-dateutil
-staticpipes[allbuild]==0.6.0
-    # via
-    #   -r requirements.in
-    #   staticpipes-datatig
-staticpipes-datatig @ git+https://github.com/TeacakeTech/StaticPipes-DataTig.git@7dc9a28b04580386e8c26a00099592bf4138dd3c
+staticpipes[allbuild] @ git+https://github.com/TeacakeTech/staticpipes-core.git@theattic2
     # via -r requirements.in
 tzlocal==5.3.1
     # via dateparser

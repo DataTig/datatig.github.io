@@ -1,8 +1,8 @@
-datatig
-staticpipes[allbuild]>=0.6
+#datatig
+#staticpipes[allbuild]>=0.6
 # For testing:
-# staticpipes[allbuild] @ git+https://github.com/TeacakeTech/staticpipes-core.git@c919c38cca68997e7008c136f842d9067bc04d2c
-git+https://github.com/TeacakeTech/StaticPipes-DataTig.git@7dc9a28b04580386e8c26a00099592bf4138dd3c
+staticpipes[allbuild] @ git+https://github.com/TeacakeTech/staticpipes-core.git@theattic2
+git+https://github.com/Datatig/DataTig.git@theattic
 markdown-it-py
 # Feedgen 1.0.0 has this bug: https://github.com/lkiesow/python-feedgen/issues/135
 feedgen<1

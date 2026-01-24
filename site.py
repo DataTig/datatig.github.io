@@ -1,6 +1,10 @@
 import datetime
 import os
 
+from datatig.staticpipes.bundles.staticsite import (
+    BundleDataTigStaticSite,
+)
+from datatig.staticpipes.pipes.load import PipeDataTigLoad
 from feedgen.feed import FeedGenerator
 from markdown_it import MarkdownIt
 from staticpipes.checks.html_tags import CheckHtmlTags
@@ -18,10 +22,6 @@ from staticpipes.pipes.exclude_underscore_directories import (
 from staticpipes.pipes.jinja2 import PipeJinja2
 from staticpipes.process_base import BaseProcessor
 from staticpipes.processes.jinja2 import ProcessJinja2
-from staticpipesdatatig.pipes.datatig_write_staticsite_output import (
-    PipeDatatigStaticSite,
-)
-from staticpipesdatatig.pipes.load_datatig import PipeLoadDatatig
 
 
 def render_markdown(content):
@@ -135,7 +135,7 @@ config = Config(
         PipeCopyWithVersioning(directories=["images"], extensions=["png"]),
         PipeCopy(directories=["fontawesome-free-6.7.2-web"]),
         PipeCopy(extensions=["txt"]),
-        PipeLoadDatatig(),
+        PipeDataTigLoad(),
         PipeBuildContext(),
         PipeJinja2(jinja2_environment=jinja2_environment),
         PipeCollectionRecordsProcess(
@@ -153,7 +153,7 @@ config = Config(
             context_key_record_data="blog",
         ),
         PipeRSSAndAtomFeed(),
-        PipeDatatigStaticSite(output_dir="datatig_for_this_website"),
+        BundleDataTigStaticSite(output_dir="datatig_for_this_website"),
     ],
     checks=[CheckInternalLinks(), CheckHtmlTags()],
     context={},
