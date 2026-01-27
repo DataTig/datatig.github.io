@@ -1,0 +1,10 @@
+name: Preview Delete
+on: delete
+
+jobs:
+  preview-delete:
+    runs-on: ubuntu-latest
+    if: github.event.ref_type == 'branch' && github.event.ref != 'refs/heads/main'
+    steps:
+    - name: Deactivate Site
+      run: "curl --retry 10 --retry-delay 30 --retry-all-errors -X POST \"https://${{ vars.STATICPATCH_DOMAIN }}/api/site/${{ vars.STATICPATCH_PUBLIC_SITE }}/preview/${{ vars.STATICPATCH_PREVIEW }}/instance/${{ github.event.ref }}/deactivate\" -H \"Security-Key: ${{ secrets.STATICPATCH_PUBLIC_SECURITY_KEY }}\" "

@@ -1,0 +1,28 @@
+name: Live Deploy
+on: [push]
+
+jobs:
+  live-deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+    - name: Setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.13
+        architecture: x64
+    - name: Install Software
+      run: pip install -r requirements.txt
+    - name: Make site
+      run: python site.py build
+    - name: Zip site
+      run: zip -r out.zip *
+      working-directory: ./_site
+    - name: Upload Site
+      run: "curl --retry 10 --retry-delay 30 --retry-all-errors -X POST \"https://${{ vars.STATICPATCH_DOMAIN }}/api/site/${{ vars.STATICPATCH_PUBLIC_SITE }}/publish_built_site\"  -H  \"Content-Type: multipart/form-data\" -H \"Security-Key: ${{ secrets.STATICPATCH_PUBLIC_SECURITY_KEY }}\" -F \"built_site=@\\\"out.zip\\\"\""
+      working-directory: ./_site
+
